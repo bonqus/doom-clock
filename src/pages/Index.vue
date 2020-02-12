@@ -14,6 +14,7 @@
           />
         </q-item>
       </q-list>
+
       <q-list class="col">
         <q-item v-for="date in upcommingSprint" :key="date.name">
           <countdown
@@ -55,13 +56,20 @@ export default {
       return [
         {
           name: "Prioritet backlog klar",
-          date: this.newDate(this.deploy, -15)
+          date: this.newDate(this.deploy, -15),
+          distance: -15
         },
         {
           name: "Team planlægger og estimerer",
-          date: this.newDate(this.deploy, -13)
+          date: this.newDate(this.deploy, -13),
+          distance: -13
         },
-        { name: "Retro og Sprint start", date: this.newDate(this.deploy, -9) }
+        {
+          name: "Retro og Sprint start",
+          date: this.newDate(this.deploy, -9),
+
+          distance: -13
+        }
       ];
     },
     currentSprint() {

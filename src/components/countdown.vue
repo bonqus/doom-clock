@@ -1,56 +1,82 @@
 <template>
-  <q-card :disabled="overdue" class="col">
-    <q-tooltip anchor="center middle" self="center middle">
-      {{ description }}
-    </q-tooltip>
-    <q-card-section class="row items-center">
-      <div class="text-h6 q-mr-md">{{ distance }}</div>
-      <div>
-        <div
-          :class="overdue ? 'text-h6 text-negative' : 'text-h6 text-primary'"
-        >
-          {{ name }}
-        </div>
-        <div class="row items-center q-gutter-x-sm text-subtitle2">
-          <q-icon name="event" />
-          <div>
-            <div class="text-caption text-grey-5" style="margin-bottom: -5px">
-              {{ endDayName }}
-            </div>
+  <q-card class="col" style="max-width: 400px;">
+    <q-expansion-item :disabled="overdue">
+      <template v-slot:header>
+        <q-item-section>
+          <div class="row items-center">
+            <div class="text-h6 q-mr-md">{{ distance }}</div>
             <div>
-              {{ endDayIso }}
+              <div
+                :class="
+                  overdue ? 'text-h6 text-negative' : 'text-h6 text-primary'
+                "
+              >
+                {{ name }}
+              </div>
+              <div class="row items-center q-gutter-x-sm text-subtitle2">
+                <q-icon name="event" />
+                <div>
+                  <div
+                    class="text-caption text-grey-5"
+                    style="margin-bottom: -5px"
+                  >
+                    {{ endDayName }}
+                  </div>
+                  <div>
+                    {{ endDayIso }}
+                  </div>
+                </div>
+              </div>
+              <div
+                v-if="!overdue"
+                class="row items-center q-gutter-x-sm text-center"
+              >
+                <q-icon name="timer" />
+                <div>
+                  <div
+                    class="text-caption text-grey-5"
+                    style="margin-bottom: -5px"
+                  >
+                    day
+                  </div>
+                  <div>{{ day }}</div>
+                </div>
+                <div>
+                  <div
+                    class="text-caption text-grey-5"
+                    style="margin-bottom: -5px"
+                  >
+                    hour
+                  </div>
+                  <div>{{ hour }}</div>
+                </div>
+                <div>
+                  <div
+                    class="text-caption text-grey-5"
+                    style="margin-bottom: -5px"
+                  >
+                    min
+                  </div>
+                  <div>{{ min }}</div>
+                </div>
+                <div>
+                  <div
+                    class="text-caption text-grey-5"
+                    style="margin-bottom: -5px"
+                  >
+                    sec
+                  </div>
+                  <div>{{ sec }}</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div v-if="!overdue" class="row items-center q-gutter-x-sm text-center">
-          <q-icon name="timer" />
-          <div>
-            <div class="text-caption text-grey-5" style="margin-bottom: -5px">
-              day
-            </div>
-            <div>{{ day }}</div>
-          </div>
-          <div>
-            <div class="text-caption text-grey-5" style="margin-bottom: -5px">
-              hour
-            </div>
-            <div>{{ hour }}</div>
-          </div>
-          <div>
-            <div class="text-caption text-grey-5" style="margin-bottom: -5px">
-              min
-            </div>
-            <div>{{ min }}</div>
-          </div>
-          <div>
-            <div class="text-caption text-grey-5" style="margin-bottom: -5px">
-              sec
-            </div>
-            <div>{{ sec }}</div>
-          </div>
-        </div>
-      </div>
-    </q-card-section>
+        </q-item-section>
+      </template>
+      <q-item-section>
+        {{ description }}
+      </q-item-section>
+    </q-expansion-item>
   </q-card>
 </template>
 
